@@ -113,6 +113,7 @@
     NSTask *aTask = [NSTask launchedTaskWithLaunchPath:@"/usr/bin/killall" arguments:args];
     
     aTask.terminationHandler = ^(NSTask *task){
+        polipoTask = nil;
         [self run:self];
     };
 	return;
