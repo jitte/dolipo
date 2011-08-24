@@ -54,6 +54,7 @@
 {	
 	firstRun = YES;
     polipoTask=nil;
+    polipoLaunched = 0;
 
 	[self createStatusBar];
 	
@@ -148,11 +149,16 @@
 			pmm = @"";
 		}
         
-        NSLog(@"polipo start");
+        ++polipoLaunched;
+        NSLog(@"polipo start: %d", polipoLaunched);
+        [sbItem setImage         : [ NSImage imageNamed : @"dolipo.tiff" ] ];
         NSArray *args = [NSArray arrayWithObjects:@"-c", configPath, proxy, forbidden, pmm, nil];
         polipoTask = [NSTask launchedTaskWithLaunchPath:polipoPath arguments:args];
         
         polipoTask.terminationHandler = ^(NSTask *task){
+            if (--polipoLaunched == 0)
+                [sbItem setImage         : [ NSImage imageNamed : @"dolipo-gray.tiff" ] ];
+            NSLog(@"polipo terminated: %d", polipoLaunched);
             polipoTask = nil;
         };
         		

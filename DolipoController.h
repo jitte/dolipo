@@ -26,6 +26,7 @@
 	IBOutlet id maximumCacheSizeField;
 	IBOutlet id startAtLoginMenuItem;
 	NSTask* polipoTask;
+    int polipoLaunched;
 	BOOL firstRun;
 }
 - (IBAction)run:(id)sender;
