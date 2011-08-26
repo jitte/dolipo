@@ -42,6 +42,14 @@
 	return;
 }
 
+- (BOOL)fileExistsAtSupportPath:(NSString *)name
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *file = [[self applicationSupportPath] stringByAppendingPathComponent:name];
+    
+    return [fileManager fileExistsAtPath:file];
+}
+
 - (void)copyFileFromResourcePathToSupportPath:(NSString*)name
 {
 	NSFileManager *fileManager;

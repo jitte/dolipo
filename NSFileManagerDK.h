@@ -12,6 +12,7 @@
 
 - (NSString*)applicationSupportPath;
 - (void)createDirectoryAtSupportPath:(NSString*)pathname;
+- (BOOL)fileExistsAtSupportPath:(NSString *)name;
 - (void)copyFileFromResourcePathToSupportPath:(NSString*)name;
 
 @end

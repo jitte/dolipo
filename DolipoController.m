@@ -70,7 +70,10 @@
 													nil];
 	int i;
 	for ( i = 0; i < [copylist count]; i++ ) {
-		[[NSFileManager defaultManager] copyFileFromResourcePathToSupportPath:[copylist objectAtIndex:i]];
+        if (![[NSFileManager defaultManager] fileExistsAtSupportPath:[copylist objectAtIndex:i]]) {
+            [[NSFileManager defaultManager] copyFileFromResourcePathToSupportPath:[copylist objectAtIndex:i]];
+            //NSLog(@"resource copied: %@", [copylist objectAtIndex:i]);
+        }
 	}
 
 	// check proxy setting
