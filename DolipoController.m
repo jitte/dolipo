@@ -131,7 +131,7 @@
 		/* create an Path to polipo file */
 		NSBundle* bundle = [NSBundle mainBundle];
 		NSString* polipoPath = [bundle pathForResource:@"polipo" ofType:@""];
-        NSString* configPath = [NSString stringWithFormat:@"%@%@", [bundle resourcePath], @"/Config"];
+        NSString* configPath = [NSString stringWithFormat:@"%@%@", [[NSFileManager defaultManager] applicationSupportPath], @"/Config"];
 		
 		NSString* proxy;
 		if ( [proxyEnableButton state] == NSOnState ) {
